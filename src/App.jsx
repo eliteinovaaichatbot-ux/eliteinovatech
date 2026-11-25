@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import BrandEcosystem from "./components/BrandEcosystem";
 import ServicesSection from "./components/ServicesSection";
+import FeaturesSection from "./components/FeaturesSection";
 export default function App() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-navy-950">
@@ -11,6 +12,7 @@ export default function App() {
       
       {/* New Sections */}
       <ServicesSection />
+      <FeaturesSection />
     </div>
   );
 }
