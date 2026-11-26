@@ -28,6 +28,7 @@ export default function App() {
         <WebAppShowcaseSection />
         <ServicesAndTechnologySection />
         <FooterSection />
+        <ProductCategoriesSection />
       </div>
     </div>
   );
