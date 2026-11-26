@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import businessWebsiteImageseo from "../assets/seo-optimize.jpg";
 import ecommerceAppImage1 from "../assets/E-Commerce-App.webp";
-import ecommerceWebImage from "../assets/E-commerce.webp";
+import ecommerceWebImage from "../assets/E-commerce-Web-Pages.webp";
 import mobileAppImage from "../assets/mobile-app-design.jpg";
 import webDesignImage from "../assets/Web-Application-Design.webp";
 import webDevelopmentImage from "../assets/Web-Application-Development.webp";
