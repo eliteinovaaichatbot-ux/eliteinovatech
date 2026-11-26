@@ -94,42 +94,32 @@ export default function FeaturesSection() {
         </motion.header>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => {
+          {features.map((feature) => {
             const Icon = feature.icon;
 
             return (
               <motion.article
                 key={feature.title}
                 variants={cardVariants}
-                whileHover={
-                  shouldReduceMotion ? undefined : { y: -6, scale: 1.015 }
-                }
-                transition={{ type: "spring", stiffness: 280, damping: 22 }}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.025] p-6 shadow-[0_12px_35px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-colors duration-300 hover:border-brand-cyan/35 sm:p-7"
               >
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-cyan/0 via-transparent to-brand-violet/0 opacity-0 transition-opacity duration-500 group-hover:from-brand-cyan/[0.08] group-hover:to-brand-violet/[0.1] group-hover:opacity-100" />
 
                 <div className="relative z-10 flex items-start gap-4">
-                  <motion.span
+                  <span
                     aria-hidden="true"
-                    animate={
-                      shouldReduceMotion ? undefined : { y: [0, -3, 0] }
-                    }
-                    transition={{
-                      duration: 2.8,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: index * 0.16,
-                    }}
-                    whileHover={
-                      shouldReduceMotion
-                        ? undefined
-                        : { rotate: 8, scale: 1.12 }
-                    }
                     className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-brand-cyan/20 bg-brand-cyan/10 text-brand-cyan shadow-[0_0_22px_rgba(62,200,255,0.08)]"
                   >
-                    <Icon size={22} strokeWidth={1.8} />
-                  </motion.span>
+                    <span
+                      className={`grid place-items-center ${
+                        shouldReduceMotion
+                          ? ""
+                          : "transition-transform duration-700 ease-in-out group-hover:rotate-[360deg]"
+                      }`}
+                    >
+                      <Icon size={22} strokeWidth={1.8} />
+                    </span>
+                  </span>
                   <div>
                     <h3 className="pt-1 text-lg font-semibold tracking-tight text-white">
                       {feature.title}

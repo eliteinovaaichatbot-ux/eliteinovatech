@@ -30,3 +30,112 @@ body { font-family: var(--font-sans); color: white; }
 .animate-pulse-glow {
   animation: pulse-glow 8s ease-in-out infinite;
 }
+
+@keyframes ambient-globe-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-18px, 24px, 0) scale(1.035); }
+}
+
+@keyframes ambient-orbit-rotate {
+  from { transform: rotate(var(--orbit-angle, -20deg)); }
+  to { transform: rotate(calc(var(--orbit-angle, -20deg) + 360deg)); }
+}
+
+.site-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.site-atmosphere__globe {
+  position: absolute;
+  width: clamp(24rem, 52vw, 56rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(62, 200, 255, 0.2);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 34% 30%, rgba(91, 190, 255, 0.42), transparent 19%),
+    radial-gradient(ellipse at 52% 54%, rgba(22, 104, 210, 0.36), rgba(7, 33, 81, 0.2) 40%, transparent 70%);
+  box-shadow: inset -24px -16px 70px rgba(0, 0, 0, 0.24), 0 0 52px rgba(62, 200, 255, 0.1);
+  opacity: 0.72;
+  animation: ambient-globe-drift 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.site-atmosphere__globe--top {
+  top: -14%;
+  right: -12%;
+}
+
+.site-atmosphere__globe--middle {
+  top: 30%;
+  left: -24%;
+  width: clamp(22rem, 39vw, 48rem);
+  animation-delay: -9s;
+}
+
+.site-atmosphere__globe--bottom {
+  top: 62%;
+  right: -24%;
+  width: clamp(26rem, 46vw, 60rem);
+  animation-delay: -17s;
+}
+
+.site-atmosphere__orbit {
+  position: absolute;
+  width: clamp(36rem, 70vw, 78rem);
+  height: clamp(15rem, 28vw, 32rem);
+  border: 1px solid rgba(62, 200, 255, 0.25);
+  border-radius: 50%;
+  box-shadow: 0 0 34px rgba(62, 200, 255, 0.1), inset 0 0 28px rgba(62, 200, 255, 0.05);
+  opacity: 0.82;
+  animation: ambient-orbit-rotate 72s linear infinite;
+  will-change: transform;
+}
+
+.site-atmosphere__orbit--top {
+  --orbit-angle: -24deg;
+  top: -12%;
+  right: -30%;
+}
+
+.site-atmosphere__orbit--middle {
+  --orbit-angle: 18deg;
+  top: 35%;
+  left: -34%;
+}
+
+.site-atmosphere__orbit--bottom {
+  --orbit-angle: -16deg;
+  top: 68%;
+  right: -34%;
+}
+
+@media (max-width: 640px) {
+  .site-atmosphere__globe {
+    width: 90vw;
+    opacity: 0.5;
+  }
+
+  .site-atmosphere__globe--middle {
+    width: 82vw;
+  }
+
+  .site-atmosphere__orbit {
+    width: 130vw;
+    height: 54vw;
+    opacity: 0.56;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-atmosphere__globe,
+  .site-atmosphere__orbit,
+  .animate-float,
+  .animate-pulse-glow {
+    animation: none;
+    will-change: auto;
+  }
+}

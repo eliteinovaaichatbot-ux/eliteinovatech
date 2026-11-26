@@ -16,7 +16,7 @@ const itemVariants = {
 
 export default function Hero() {
   return (
-    <section className="relative">
+    <section className="relative lg:flex lg:min-h-[calc(100vh-6rem)] lg:items-center">
       {/* Background: glow + city image */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Animated Glow */}
@@ -36,7 +36,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 pb-24 pt-10 lg:px-10 lg:pt-16">
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 pb-16 pt-10 lg:px-10 lg:pb-4 lg:pt-4">
         <motion.div 
           variants={containerVariants}
           initial="hidden"

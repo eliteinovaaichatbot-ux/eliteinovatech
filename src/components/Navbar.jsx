@@ -56,7 +56,13 @@ export default function Navbar() {
       </motion.a>
 
       {/* Mobile toggle */}
-      <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
+      <button
+        className="rounded-lg p-2 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan lg:hidden"
+        onClick={() => setOpen(!open)}
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        aria-controls="mobile-menu"
+      >
         {open ? <X /> : <Menu />}
       </button>
 
@@ -68,6 +74,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
+            id="mobile-menu"
             className="absolute left-4 right-4 top-full flex flex-col gap-1 rounded-2xl border border-white/10 bg-navy-900/95 p-4 backdrop-blur-lg lg:hidden"
           >
             {links.map((l) => (
@@ -75,6 +82,7 @@ export default function Navbar() {
                 whileHover={{ x: 10, backgroundColor: "rgba(255,255,255,0.1)" }}
                 key={l.label} 
                 href={l.href} 
+                onClick={() => setOpen(false)}
                 className="rounded-lg px-4 py-3"
               >
                 {l.label}
